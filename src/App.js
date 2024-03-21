@@ -10,13 +10,16 @@ const App = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    setTasks(storedTasks);
-  }, []);
+        const savedTasks = JSON.parse(localStorage.getItem('tasks'));
+        if (savedTasks && savedTasks.length > 0) {
+            setTasks(savedTasks);
+        }
+    }, []);
 
-  useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
+    // Save tasks to localStorage whenever tasks state changes
+    useEffect(() => {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, [tasks]);
 
   const handleAddTask = (title) => {
     const newTask = {
