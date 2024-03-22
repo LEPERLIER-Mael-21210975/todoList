@@ -3,14 +3,22 @@ import '../Modal.css'; // Assurez-vous d'importer le fichier CSS pour le style d
 
 const Modal = ({ onClose, onAdd }) => {
   const [title, setTitle] = useState('');
+  const [deadline, setDeadline] = useState('');
 
-  const handleChange = (e) => {
+  const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
 
+  const handleDeadlineChange = (e) => {
+    setDeadline(e.target.value);
+  };
+
   const handleSubmit = () => {
-    onAdd(title);
+    onAdd(title, deadline);
+    // console.log("Titre de la tâche :", title);
+    // console.log("Date limite de la tâche :", deadline);
     setTitle('');
+    setDeadline('');
     onClose(); // Ferme le modal après avoir ajouté une tâche
   };
 
@@ -21,8 +29,14 @@ const Modal = ({ onClose, onAdd }) => {
           <input
               type="text"
               value={title}
-              onChange={handleChange}
+              onChange={handleTitleChange}
               placeholder="Enter task title"
+          />
+          <input
+              type="date"
+              value={deadline}
+              onChange={handleDeadlineChange}
+              placeholder="Enter deadline"
           />
           <button onClick={handleSubmit}>Add Task</button>
         </div>

@@ -1,4 +1,4 @@
-/* Styles dégueulasses */
+/* Styles améliorés */
 
 /* Corps */
 body {
@@ -21,7 +21,8 @@ body {
 /* Liens */
 a {
   color: #0000ff;
-  text-decoration: underline;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 a:hover {
@@ -32,10 +33,12 @@ a:hover {
 button {
   background-color: #00ffff;
   color: #ff00ff;
-  border: 5px dotted #0000ff;
+  border: 5px solid #0000ff;
   border-radius: 20px;
   padding: 15px 30px;
   margin: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button:hover {
