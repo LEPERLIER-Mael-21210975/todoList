@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import '../Modal.css'; // Assurez-vous d'importer le fichier CSS pour le style du modal
+import '../Modal.css';
 
 const Modal = ({ onClose, onAdd }) => {
   const [title, setTitle] = useState('');
   const [deadline, setDeadline] = useState('');
+  const [category, setCategory] = useState('');
+
+  // Liste des catégories prédéfinies
+  const categories = ['Personal', 'Work', 'Study', 'Other'];
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -13,13 +17,16 @@ const Modal = ({ onClose, onAdd }) => {
     setDeadline(e.target.value);
   };
 
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
+
   const handleSubmit = () => {
-    onAdd(title, deadline);
-    // console.log("Titre de la tâche :", title);
-    // console.log("Date limite de la tâche :", deadline);
+    onAdd(title, deadline, category);
     setTitle('');
     setDeadline('');
-    onClose(); // Ferme le modal après avoir ajouté une tâche
+    setCategory('');
+    onClose();
   };
 
   return (
@@ -32,6 +39,15 @@ const Modal = ({ onClose, onAdd }) => {
               onChange={handleTitleChange}
               placeholder="Enter task title"
           />
+          <select
+              value={category}
+              onChange={handleCategoryChange}
+          >
+            <option value="">Select category</option>
+            {categories.map(cat => (
+                <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
           <input
               type="date"
               value={deadline}

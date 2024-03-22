@@ -20,9 +20,11 @@ const App = () => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }, [tasks]);
 
-    const handleAddTask = (title) => {
+    const handleAddTask = (title, deadline, category) => {
         const newTask = {
             title,
+            deadline,
+            category,
             isChecked: false,
         };
         setTasks([...tasks, newTask]);

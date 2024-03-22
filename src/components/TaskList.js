@@ -26,23 +26,33 @@ const TaskList = ({ tasks, onDelete, onToggleCheck, onTaskOrderChange }) => {
     };
 
     return (
-        <ul>
+        <ul className="task-list">
             {tasks.map((task, index) => (
-                <li key={task.title}>
+                <li key={task.title} className={task.isChecked ? 'checked' : ''}>
                     <input
                         type="checkbox"
                         checked={task.isChecked}
                         onChange={() => onToggleCheck(index)}
                     />
-                    <span>{task.title}</span>
+                    <span className="task-title">{task.title}</span>
                     {task.deadline && (
-                        <span>
+                        <span className={isDeadlinePassed(task.deadline) ? 'deadline-passed' : 'deadline'}>
                             {isDeadlinePassed(task.deadline) ? "(Deadline Passed)" : `Deadline: ${task.deadline}`}
                         </span>
                     )}
-                    <button onClick={() => onDelete(index)}>Delete</button>
-                    <button onClick={() => handleMoveUp(index)}>▲</button>
-                    <button onClick={() => handleMoveDown(index)}>▼</button>
+                    {task.category && (
+                        <span className="category">
+                            {task.category === 'Personal' && '⚽️'} {/* Exemple d'emoji pour la catégorie "Personal" */}
+                            {task.category === 'Work' && '💼'} {/* Exemple d'emoji pour la catégorie "Work" */}
+                            {task.category === 'Study' && '📚'} {/* Exemple d'emoji pour la catégorie "Study" */}
+                            {task.category === 'Other' && '🎁'} {/* Exemple d'emoji pour la catégorie "Other" */}
+                        </span>
+                    )}
+                    <div className="task-buttons">
+                        <button onClick={() => onDelete(index)} className="delete-btn">Delete</button>
+                        <button onClick={() => handleMoveUp(index)} className="move-up-btn">▲</button>
+                        <button onClick={() => handleMoveDown(index)} className="move-down-btn">▼</button>
+                    </div>
                 </li>
             ))}
         </ul>

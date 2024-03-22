@@ -1,8 +1,8 @@
-/* Styles améliorés */
+/* Styles dégueulasses */
 
 /* Corps */
 body {
-  background: linear-gradient(to right, #ff00ff, #ffff00);
+  background: linear-gradient(to left, #ff00ff, #ffff00);
   font-family: "Comic Sans MS", cursive, sans-serif;
   color: #00ff00;
   text-align: center;
@@ -21,8 +21,7 @@ body {
 /* Liens */
 a {
   color: #0000ff;
-  text-decoration: none;
-  transition: color 0.3s ease;
+  text-decoration: underline;
 }
 
 a:hover {
@@ -33,12 +32,10 @@ a:hover {
 button {
   background-color: #00ffff;
   color: #ff00ff;
-  border: 5px solid #0000ff;
+  border: 5px dotted #0000ff;
   border-radius: 20px;
   padding: 15px 30px;
   margin: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button:hover {
@@ -57,7 +54,7 @@ input[type="text"] {
 }
 
 /* Messages d'erreur */
-.error-message {
+.deadline-passed {
   color: #ff0000;
   font-weight: bold;
   text-transform: uppercase;
@@ -72,4 +69,50 @@ input[type="text"] {
   padding: 20px;
   text-align: center;
   margin-top: 50px;
+}
+
+/* Tâches */
+.task-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task-list li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: linear-gradient(to right, #ff00ff, #ffff00); /* Dégradé rappelant la couleur de fond */
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap; /* Empêche le débordement du texte sur plusieurs lignes */
+    position: relative; /* Pour positionner le pseudo-élément par rapport à l'élément parent */
+}
+
+.task-list li.checked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #000; /* Couleur du trait de soulignement */
+    transform: translateY(-50%); /* Centre le trait de soulignement verticalement */
+}
+
+.task-title {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 18px; /* Taille du texte */
+}
+
+.deadline,
+.category {
+    margin-left: 20px; /* Espacement entre les éléments */
+    font-size: 16px; /* Taille du texte */
 }
