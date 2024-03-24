@@ -42,10 +42,10 @@ const TaskList = ({ tasks, onDelete, onToggleCheck, onTaskOrderChange }) => {
                     )}
                     {task.category && (
                         <span className="category">
-                            {task.category === 'Personal' && '⚽️'} {/* Exemple d'emoji pour la catégorie "Personal" */}
-                            {task.category === 'Work' && '💼'} {/* Exemple d'emoji pour la catégorie "Work" */}
-                            {task.category === 'Study' && '📚'} {/* Exemple d'emoji pour la catégorie "Study" */}
-                            {task.category === 'Other' && '🎁'} {/* Exemple d'emoji pour la catégorie "Other" */}
+                            {task.category === 'Personal' && '⚽️'}
+                            {task.category === 'Work' && '💼'}
+                            {task.category === 'Study' && '📚'}
+                            {task.category === 'Other' && '🎁'}
                         </span>
                     )}
                     <div className="task-buttons">

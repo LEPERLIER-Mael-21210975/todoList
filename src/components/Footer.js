@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Footer = ({ onSearch, onAdd }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+const Footer = ({ onSearch, onAdd, onSave }) => {
+    const handleChange = (e) => {
+        onSearch(e.target.value);
+    };
 
-  const handleChange = (e) => {
-    setSearchTerm(e.target.value);
-    onSearch(e.target.value);
-  };
-
-  return (
-    <footer>
-      <input
-        type="text"
-        placeholder="Search tasks..."
-        value={searchTerm}
-        onChange={handleChange}
-      />
-      <button onClick={onAdd}>Add Task</button>
-    </footer>
-  );
+    return (
+        <footer>
+            <input
+                type="text"
+                placeholder="Search tasks..."
+                onChange={handleChange}
+            />
+            <button onClick={onAdd}>Add Task</button>
+            <button onClick={onSave}>Save</button>
+        </footer>
+    );
 };
 
 export default Footer;

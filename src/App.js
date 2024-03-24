@@ -16,10 +16,6 @@ const App = () => {
         }
     }, []);
 
-    useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }, [tasks]);
-
     const handleAddTask = (title, deadline, category) => {
         const newTask = {
             title,
@@ -51,6 +47,10 @@ const App = () => {
         setSearchTerm(term);
     };
 
+    const handleSaveTasks = () => {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    };
+
     const filteredTasks = tasks.filter((task) =>
         task.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -62,10 +62,10 @@ const App = () => {
                 tasks={filteredTasks}
                 onDelete={handleDeleteTask}
                 onToggleCheck={handleToggleCheck}
-                onTaskOrderChange={handleTaskOrderChange} // Pass the handleTaskOrderChange function
+                onTaskOrderChange={handleTaskOrderChange}
             />
             {modalOpen && <Modal onClose={() => setModalOpen(false)} onAdd={handleAddTask} />}
-            <Footer onSearch={handleSearch} onAdd={() => setModalOpen(true)} />
+            <Footer onSearch={handleSearch} onAdd={() => setModalOpen(true)} onSave={handleSaveTasks} />
         </div>
     );
 };

@@ -6,7 +6,6 @@ const Modal = ({ onClose, onAdd }) => {
   const [deadline, setDeadline] = useState('');
   const [category, setCategory] = useState('');
 
-  // Liste des catégories prédéfinies
   const categories = ['Personal', 'Work', 'Study', 'Other'];
 
   const handleTitleChange = (e) => {

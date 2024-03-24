@@ -1,6 +1,3 @@
-/* Styles dégueulasses */
-
-/* Corps */
 body {
   background: linear-gradient(to left, #ff00ff, #ffff00);
   font-family: "Comic Sans MS", cursive, sans-serif;
@@ -8,7 +5,6 @@ body {
   text-align: center;
 }
 
-/* Conteneur principal */
 .container {
   max-width: 80vw;
   margin: 0 auto;
@@ -18,7 +14,6 @@ body {
   box-shadow: 0 0 50px #000;
 }
 
-/* Liens */
 a {
   color: #0000ff;
   text-decoration: underline;
@@ -28,7 +23,6 @@ a:hover {
   color: #ff00ff;
 }
 
-/* Boutons */
 button {
   background-color: #00ffff;
   color: #ff00ff;
@@ -43,7 +37,6 @@ button:hover {
   color: #ffff00;
 }
 
-/* Formulaires */
 input[type="text"] {
   padding: 10px;
   border: 3px solid #00ff00;
@@ -53,7 +46,6 @@ input[type="text"] {
   font-size: 18px;
 }
 
-/* Messages d'erreur */
 .deadline-passed {
   color: #ff0000;
   font-weight: bold;
@@ -62,7 +54,6 @@ input[type="text"] {
   margin-top: 20px;
 }
 
-/* Pied de page */
 .footer {
   background-color: #000;
   color: #fff;
@@ -71,7 +62,6 @@ input[type="text"] {
   margin-top: 50px;
 }
 
-/* Tâches */
 .task-list {
     list-style-type: none;
     padding: 0;
@@ -83,36 +73,31 @@ input[type="text"] {
 .task-list li {
     margin-bottom: 10px;
     padding: 10px;
-    background: linear-gradient(to right, #ff00ff, #ffff00); /* Dégradé rappelant la couleur de fond */
+    background: linear-gradient(to right, #ff00ff, #ffff00);
     border-radius: 5px;
     width: 80%;
     max-width: 600px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: nowrap; /* Empêche le débordement du texte sur plusieurs lignes */
-    position: relative; /* Pour positionner le pseudo-élément par rapport à l'élément parent */
+    flex-wrap: nowrap;
+    position: relative;
 }
 
-.task-list li.checked::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #000; /* Couleur du trait de soulignement */
-    transform: translateY(-50%); /* Centre le trait de soulignement verticalement */
+.task-list li.checked {
+    filter: grayscale(100%); /* filtre gris sur les taches validées */
 }
+
+
 
 .task-title {
     flex: 1;
     margin-left: 10px;
-    font-size: 18px; /* Taille du texte */
+    font-size: 18px;
 }
 
 .deadline,
 .category {
-    margin-left: 20px; /* Espacement entre les éléments */
-    font-size: 16px; /* Taille du texte */
+    margin-left: 20px;
+    font-size: 16px;
 }
